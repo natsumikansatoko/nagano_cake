@@ -10,7 +10,52 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3" href="/">長野ケーキ</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-dark mr-3 my-1" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-dark mr-3 my-1" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "注文履歴一覧", admin_orders_path, class: "btn btn-outline-dark mr-3 my-1" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-dark mr-3 my-1" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark mr-3 my-1" %>
+              </li>
+              <% else %>
+              <li class="nav-item">
+                <%= link_to "About", about_path, class: "btn btn-outline-dark mr-3 my-1" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "商品一覧", items_path, class: "btn btn-outline-dark mr-3 my-1" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "新規登録", new_public_registration_path, class: "btn btn-outline-dark mr-3 my-1" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_public_session_path, class: "btn btn-outline-dark mr-3 my-1" %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
