@@ -6,3 +6,4 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
 end
+with_tax_price
