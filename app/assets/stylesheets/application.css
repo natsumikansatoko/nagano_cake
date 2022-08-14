@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+.img-container img {
+  width: 400px;
+  height: 320px;
+  object-fit: cover;
+}

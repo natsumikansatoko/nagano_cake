@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_09_045510) do
+ActiveRecord::Schema.define(version: 2022_08_14_071223) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id", null: false
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2022_08_09_045510) do
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image_id"
     t.index ["name"], name: "index_items_on_name"
   end
 

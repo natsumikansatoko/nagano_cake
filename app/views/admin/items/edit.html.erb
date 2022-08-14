@@ -1,2 +1,43 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<h4 class="m-5 w-25 bg-light text-center">商品編集</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 px-sm-0 mx-auto mb-5">
+      <%= form_with model: @item, url: admin_item_path, local: true do |f| %>
+        <table>
+          <tr>
+            <th><%= f.label '商品画像' %></th>
+            <td><%= f.attachment_field :image, class: "mb-2" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label '商品名' %></th>
+            <td><%= f.text_field :name, :placeholder => "商品名", size: "40x1", class: "mb-2" %></td>
+          </tr>
+          <tr valign="top">
+            <th><%= f.label '商品説明' %></th>
+            <td><%= f.text_area :introduction, :placeholder => "ここに説明文を記述します", size: "40x5", class: "mb-2" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label 'ジャンル' %></th>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, class: "mb-2", :prompt => "-- 選択してください --" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label '税抜価格' %></th>
+            <td><%= f.text_field :price, :placeholder => "1000", class: "mb-2" %>円</td>
+          </tr>
+          <tr>
+            <th><%= f.label '販売ステータス', class: "mr-3" %></th>
+            <td>
+              <%= f.radio_button :is_active, true, cheked: true, class: "mb-2" %>
+              <%= f.label :is_active, "販売中" %>
+              <%= f.radio_button :is_active, false %>
+              <%= f.label :is_active, "販売停止中" %>
+            </td>
+          </tr>
+        </table>
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <%= f.submit "変更を保存", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
