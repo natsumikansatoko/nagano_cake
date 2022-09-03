@@ -1,2 +1,16 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<h4 class="mt-5 ml-5 w-25 bg-light text-center">会員情報編集</h4>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table-borderless">
+      <%= form_with model: @customer, url: customers_path, method: :patch, locak: true do |f| %>
+        <tr>
+          <th>氏名</th>
+          <td><%= f.text_field :last_name, :placeholder => '令和', :size => '25' %></td>
+          <td><%= f.text_field :first_name, :placeholder => '道子', :size => '25' %></td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>
