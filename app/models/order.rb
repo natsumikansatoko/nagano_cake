@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   has_many :items
 
   validates :customer_id, :address, :name, :shipping_cost,
-            :payment_method, presense: true
+            :payment_method, presence: true
   validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
 
   enum payment_method: { クレジットカード: 0, 銀行振込: 1 }
