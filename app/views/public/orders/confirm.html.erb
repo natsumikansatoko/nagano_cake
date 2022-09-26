@@ -57,28 +57,28 @@
   </div>
   <div class="row">
     <div class="col-lg-7">
+      <%= form_with model: @order, url: orders_path, method: :post, local: true do |f|%>
       <table class="table table-borderless">
         <tr>
           <th class="col-xs-3 font-weight-bold mb-3">支払方法</th>
           <td><%= @order.payment_method %></td>
+          <%= f.hidden_field :payment_method %>
         </tr>
         <tr>
           <th class="col-xs-3 font-weight-bold mb-3">お届け先</th>
           <td><%= "〒#{@order.postal_code} #{@order.address} #{@order.name}" %></td>
+          <%= f.hidden_field :postal_code %>
+          <%= f.hidden_field :address %>
+          <%= f.hidden_field :name %>
         </tr>
       </table>
+      <h3 class="mx-auto">
+        <%= f.submit '注文を確定する', class:'btn btn-success'%>
+      </h3>
+      <% end %>
     </div>
   </div>
   <div class="row">
-    <h3 class="mx-auto">
-      <%= form_with model: @order, url: orders_path, method: :post, local: true do |f|%>
-        <%= f.hidden_field :payment_method %>
-        <%= f.hidden_field :postal_code %>
-        <%= f.hidden_field :address %>
-        <%= f.hidden_field :name %>
-        <%= f.hidden_field :total_payment %>
-        <%= f.submit '注文を確定する', class:'btn btn-success'%>
-      <% end %>
-    </h3>
+
   </div>
 </div>
